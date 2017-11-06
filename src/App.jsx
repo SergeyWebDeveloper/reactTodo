@@ -14,7 +14,7 @@ class App extends React.Component {
     render(){
         return(
             <div className="todo__wrapper">
-                <p>Todo Wrapper2</p>
+                <p>Todo Wrapper</p>
             </div>
         )
     }
