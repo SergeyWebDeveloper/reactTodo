@@ -1,4 +1,5 @@
-var path = require('path');
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
     entry: "./src/App.jsx", // входная точка - исходный файл
@@ -24,5 +25,8 @@ module.exports = {
                 }]
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.NamedModulesPlugin()
+    ]
 };
