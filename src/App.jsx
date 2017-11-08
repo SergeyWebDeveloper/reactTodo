@@ -12,7 +12,18 @@ class App extends React.Component {
     constructor() {
         super();
         this.state = {
-            todos: []
+            todos: [
+                {
+                    id: 1,
+                    text: 'Todo 1',
+                    completed: false
+                },
+                {
+                    id: 2,
+                    text: 'Todo 2',
+                    completed: true
+                }
+            ]
         };
         this.addTodoItem=this.addTodoItem.bind(this);
 
@@ -29,7 +40,7 @@ class App extends React.Component {
             <main>
                 <Header title={'React Todo'} />
                 <TodoList todoList={this.state.todos} />
-                <Form todoElemLength={this.state.todos} addTodoElem={this.addTodoItem} />
+                <Form todoElemArray={this.state.todos} addTodoElem={this.addTodoItem} />
             </main>
         )
     }

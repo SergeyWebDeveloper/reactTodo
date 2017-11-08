@@ -19,8 +19,10 @@ class Form extends React.Component{
     }
 
     nextId(){
-        let lengthTodos=this.props.todoElemLength.length;
-        return lengthTodos ? lengthTodos+1 : 1;
+        let todosIdArray=this.props.todoElemArray.map((elem)=>{
+           return elem.id;
+        });
+        return todosIdArray ? Math.max.apply(null,todosIdArray)+1 : 1;
     }
 
     handleAddTodo(e){
