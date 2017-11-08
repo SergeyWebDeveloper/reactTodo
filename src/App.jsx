@@ -38,14 +38,13 @@ class App extends React.Component {
     render() {
         return (
             <main>
-                <Header title={'React Todo'} />
+                <Header todoElementsStatistics={this.state.todos} title={'React Todo'} />
                 <TodoList todoList={this.state.todos} />
                 <Form todoElemArray={this.state.todos} addTodoElem={this.addTodoItem} />
             </main>
         )
     }
 }
-
 
 ReactDOM.render(
     <App />

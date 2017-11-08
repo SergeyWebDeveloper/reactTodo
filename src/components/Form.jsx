@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Form extends React.Component{
 
@@ -41,7 +42,6 @@ class Form extends React.Component{
 
 
     render(){
-        // console.log(this.props.addTodoElem);
         return(
             <form className="todo-add-form">
                 <input type="text" onChange={this.handleChangeValue} value={this.state.value} placeholder="Что нужно сделать?"/>
@@ -50,5 +50,10 @@ class Form extends React.Component{
         )
     }
 }
+
+Form.propTypes={
+    todoElemArray: PropTypes.array.isRequired,
+    addTodoElem: PropTypes.func.isRequired
+};
 
 export default Form;
