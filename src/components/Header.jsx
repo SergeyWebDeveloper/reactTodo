@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function Header() {
+function Header(props) {
     return (
         <header>
             <table className="stats">
@@ -19,7 +20,7 @@ function Header() {
                 </tr>
                 </tbody>
             </table>
-            <h1>React Todo</h1>
+            <h1>{props.title}</h1>
             <section className="stopwatch">
                 <div className="stopwatch-time">00:00</div>
                 <div className="stopwatch-controls">
@@ -31,5 +32,10 @@ function Header() {
         </header>
     );
 }
+
+Header.propTypes={
+  title: PropTypes.string
+};
+
 
 export default Header;
