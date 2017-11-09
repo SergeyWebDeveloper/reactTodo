@@ -12,7 +12,28 @@ class App extends React.Component {
     constructor() {
         super();
         this.state = {
-            todos: []
+            todos: [
+                {
+                    id: 1,
+                    text: 'Todo 1',
+                    completed: true
+                },
+                {
+                    id: 2,
+                    text: 'Todo 2',
+                    completed: false
+                },
+                {
+                    id: 3,
+                    text: 'Todo 3',
+                    completed: false
+                },
+                {
+                    id: 4,
+                    text: 'Todo 4',
+                    completed: true
+                }
+            ]
         };
         this.addTodoItem=this.addTodoItem.bind(this);
 
