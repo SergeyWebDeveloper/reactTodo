@@ -16,11 +16,16 @@ class App extends React.Component {
                 {
                     id: 1,
                     text: 'Todo 1',
+<<<<<<< HEAD
                     completed: true
+=======
+                    completed: false
+>>>>>>> 4ae11fc2697567a2b81b44c2fe6e72c193e147a8
                 },
                 {
                     id: 2,
                     text: 'Todo 2',
+<<<<<<< HEAD
                     completed: false
                 },
                 {
@@ -31,6 +36,8 @@ class App extends React.Component {
                 {
                     id: 4,
                     text: 'Todo 4',
+=======
+>>>>>>> 4ae11fc2697567a2b81b44c2fe6e72c193e147a8
                     completed: true
                 }
             ]
@@ -48,14 +55,13 @@ class App extends React.Component {
     render() {
         return (
             <main>
-                <Header title={'React Todo'} />
+                <Header todoElementsStatistics={this.state.todos} title={'React Todo'} />
                 <TodoList todoList={this.state.todos} />
-                <Form todoElemLength={this.state.todos} addTodoElem={this.addTodoItem} />
+                <Form todoElemArray={this.state.todos} addTodoElem={this.addTodoItem} />
             </main>
         )
     }
 }
-
 
 ReactDOM.render(
     <App />

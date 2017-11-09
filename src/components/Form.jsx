@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Form extends React.Component{
 
@@ -19,8 +20,10 @@ class Form extends React.Component{
     }
 
     nextId(){
-        let lengthTodos=this.props.todoElemLength.length;
-        return lengthTodos ? lengthTodos+1 : 1;
+        let todosIdArray=this.props.todoElemArray.map((elem)=>{
+           return elem.id;
+        });
+        return todosIdArray ? Math.max.apply(null,todosIdArray)+1 : 1;
     }
 
     handleAddTodo(e){
@@ -39,7 +42,6 @@ class Form extends React.Component{
 
 
     render(){
-        // console.log(this.props.addTodoElem);
         return(
             <form className="todo-add-form">
                 <input type="text" onChange={this.handleChangeValue} value={this.state.value} placeholder="Что нужно сделать?"/>
@@ -48,5 +50,10 @@ class Form extends React.Component{
         )
     }
 }
+
+Form.propTypes={
+    todoElemArray: PropTypes.array.isRequired,
+    addTodoElem: PropTypes.func.isRequired
+};
 
 export default Form;
