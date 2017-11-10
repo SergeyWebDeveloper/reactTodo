@@ -28,16 +28,26 @@ class Form extends React.Component{
 
     handleAddTodo(e){
         e.preventDefault();
-        let itemTodo={
-          id: this.nextId(),
-          text: this.state.value,
-          completed: false
-        };
-        this.props.addTodoElem(itemTodo);
-        this.setState({
-            value: ''
-        });
+        if(this.state.value.trim()){
+            let itemTodo={
+                id: this.nextId(),
+                text: this.state.value,
+                completed: false
+            };
+            this.props.addTodoElem(itemTodo);
+            this.setState({
+                value: ''
+            });
+        }
     };
+
+    componentWillReceiveProps(nextProps){
+        if(nextProps.todoId!==this.props.todoId){
+            this.setState({
+                value: nextProps.todoId
+            });
+        }
+    }
 
 
 
@@ -53,7 +63,8 @@ class Form extends React.Component{
 
 Form.propTypes={
     todoElemArray: PropTypes.array.isRequired,
-    addTodoElem: PropTypes.func.isRequired
+    addTodoElem: PropTypes.func.isRequired,
+    todoId: PropTypes.number
 };
 
 export default Form;

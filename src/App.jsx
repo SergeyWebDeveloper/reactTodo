@@ -33,10 +33,13 @@ class App extends React.Component {
                     text: 'Todo 4',
                     completed: true
                 }
-            ]
+            ],
+            idEditTodo: null
         };
         this.addTodoItem=this.addTodoItem.bind(this);
         this.handleDeleteTodo=this.handleDeleteTodo.bind(this);
+        this.handleCompleted=this.handleCompleted.bind(this);
+        this.handleEditTodo=this.handleEditTodo.bind(this);
 
     }
 
@@ -54,12 +57,29 @@ class App extends React.Component {
         this.setState({todos});
     }
 
+    handleCompleted(id){
+        let oldTodos=this.state.todos;
+        let todos=oldTodos.map((elem)=>{
+           if(elem.id===id){
+               elem.completed=!elem.completed;
+           }
+           return elem;
+        });
+        this.setState({todos});
+    }
+
+    handleEditTodo(id){
+        this.setState({
+            idEditTodo: id
+        })
+    }
+
     render() {
         return (
             <main>
                 <Header todoElementsStatistics={this.state.todos} title={'React Todo'} />
-                <TodoList idDeleteTodo={this.handleDeleteTodo} todoList={this.state.todos} />
-                <Form todoElemArray={this.state.todos} addTodoElem={this.addTodoItem} />
+                <TodoList editTodo={this.handleEditTodo} completedTodo={this.handleCompleted} idDeleteTodo={this.handleDeleteTodo} todoList={this.state.todos} />
+                <Form todoId={this.state.idEditTodo} todoElemArray={this.state.todos} addTodoElem={this.addTodoItem} />
             </main>
         )
     }
