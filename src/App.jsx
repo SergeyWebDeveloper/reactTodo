@@ -16,16 +16,11 @@ class App extends React.Component {
                 {
                     id: 1,
                     text: 'Todo 1',
-<<<<<<< HEAD
                     completed: true
-=======
-                    completed: false
->>>>>>> 4ae11fc2697567a2b81b44c2fe6e72c193e147a8
                 },
                 {
                     id: 2,
                     text: 'Todo 2',
-<<<<<<< HEAD
                     completed: false
                 },
                 {
@@ -36,13 +31,12 @@ class App extends React.Component {
                 {
                     id: 4,
                     text: 'Todo 4',
-=======
->>>>>>> 4ae11fc2697567a2b81b44c2fe6e72c193e147a8
                     completed: true
                 }
             ]
         };
         this.addTodoItem=this.addTodoItem.bind(this);
+        this.handleDeleteTodo=this.handleDeleteTodo.bind(this);
 
     }
 
@@ -52,11 +46,19 @@ class App extends React.Component {
         this.setState({todos});
     }
 
+    handleDeleteTodo(id) {
+        let oldTodos = this.state.todos;
+        let todos = oldTodos.filter((elem) => {
+            return elem.id !== id;
+        });
+        this.setState({todos});
+    }
+
     render() {
         return (
             <main>
                 <Header todoElementsStatistics={this.state.todos} title={'React Todo'} />
-                <TodoList todoList={this.state.todos} />
+                <TodoList idDeleteTodo={this.handleDeleteTodo} todoList={this.state.todos} />
                 <Form todoElemArray={this.state.todos} addTodoElem={this.addTodoItem} />
             </main>
         )
